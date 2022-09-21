@@ -42,3 +42,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+button{
+	border: none;
+	box-shadow: none;
+	animation: none; 
+}

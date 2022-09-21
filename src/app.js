@@ -1,12 +1,20 @@
-import palavras from "./palavras"
-import Visualization from "./Jogo"
-import Interface from "./interface"
+import words from "./words"
+import Game from "./game/game.js"
+import Letters from "./letters.js"
+import Guess from "./guess.js"
+
+import "./css/reset.css"
+import "./css/style.css"
+
 
 export default function App(){
     return(
-        <div className="app">
-            <Visualization/>
-            <Interface/>
-        </div>
+        <>
+            <Game/>
+            <Letters/>
+            <Guess/>
+        </>
     )
+    
 }
+
