@@ -5,13 +5,20 @@ import Guess from "./guess.js"
 
 import "./css/reset.css"
 import "./css/style.css"
+import { useState } from "react"
 
 
 export default function App(){
+    const [value, setValue]= useState(0)
+
+    function determineValue(){
+        setValue(value +1)
+    }
+
     return(
         <>
-            <Game/>
-            <Letters/>
+            <Game value={value}/>
+            <Letters checkUpstage={determineValue}/>
             <Guess/>
         </>
     )

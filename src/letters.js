@@ -1,6 +1,12 @@
 import { useState } from "react"
+import App from "./app"
 
-export default function Letters(){
+export default function Letters(props){
+
+    const {checkUpstage} = props
+
+    console.log(checkUpstage)
+
     const alphabet = [
         "a", "b", "c", "d", "e", 
         "f", "g", "h", "i", "j", 
@@ -11,24 +17,27 @@ export default function Letters(){
     
     return(
         <div className="letters-guess">
-            {alphabet.map((l) => <Letter value={l}/>)}
+            {alphabet.map((l) => <Letter value={l} upstage ={checkUpstage}/>)}
         </div>
     )   
 }
 
 function Letter(props){
+    const {value ,upstage} = props
     const[state, setState]= useState(true)
 
-    function check(){
+    function checkButton(){
         if(state){
             setState(false)
         }
+        upstage()
     }
+
 
     return(
         <div className={(state)? "letter active" : "letter deactive"} 
-        onClick={() => check()}>
-            <h1>{props.value}</h1>
+        onClick={() => checkButton()}>
+            <h1>{value}</h1>
         </div>
     )
 }

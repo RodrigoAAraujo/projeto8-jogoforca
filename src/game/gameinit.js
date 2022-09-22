@@ -1,4 +1,5 @@
 import { useState } from "react"
+import escape from "./game"
 
 export default function GameInit(props){
     return(

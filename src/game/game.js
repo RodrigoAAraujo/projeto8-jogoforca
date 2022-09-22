@@ -15,10 +15,32 @@ import forca5 from "../assets/forca5.png"
 import forca6 from "../assets/forca6.png"
 
 
-export default function Game(){
+export default function Game(props){
+    const val = props.value
+
+
+    function stageForc(){
+        switch (val){
+            case(0):
+                return forca0
+            case(1):
+                return forca1
+            case(2):
+                return forca2
+            case(3):
+                return forca3
+            case(4):
+                return forca4
+            case(5):
+                return forca5
+            case(6):
+                return forca6
+        }
+   }
+
     return(
         <header>
-            <ForcView stage={forca0}/>
+            <ForcView stage={stageForc()}/>
             <div>   
                 <GameInit/>
                 <WordChosen/>
