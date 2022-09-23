@@ -2,10 +2,7 @@ import { useState } from "react"
 import App from "./app"
 
 export default function Letters(props){
-
-    const {checkUpstage} = props
-
-    console.log(checkUpstage)
+    const {checkLetter, putOn} = props
 
     const alphabet = [
         "a", "b", "c", "d", "e", 
@@ -17,26 +14,36 @@ export default function Letters(props){
     
     return(
         <div className="letters-guess">
-            {alphabet.map((l) => <Letter value={l} upstage ={checkUpstage}/>)}
+            {alphabet.map((l) => 
+            <Letter 
+                value={l} 
+                checkLetter ={checkLetter}
+                putOn={putOn}
+            />)}
         </div>
     )   
 }
 
 function Letter(props){
-    const {value ,upstage} = props
-    const[state, setState]= useState(true)
+    const {value ,checkLetter, putOn} = props
+    const [putOnCheck, setCheck] = useState(true)
 
-    function checkButton(){
-        if(state){
-            setState(false)
+    console.log(checkLetter)
+
+
+    function checkButton(value){
+        if(putOn && putOnCheck){
+            checkLetter(value)
+            setCheck(false)
         }
-        upstage()
     }
 
 
+
+
     return(
-        <div className={(state)? "letter active" : "letter deactive"} 
-        onClick={() => checkButton()}>
+        <div className={(putOn && putOnCheck)? "letter active" : "letter deactive"} 
+        onClick={() => checkButton(value)}>
             <h1>{value}</h1>
         </div>
     )

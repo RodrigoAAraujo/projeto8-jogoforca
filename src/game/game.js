@@ -16,11 +16,10 @@ import forca6 from "../assets/forca6.png"
 
 
 export default function Game(props){
-    const val = props.value
-
+    const {value, startGameClick, word, letter} = props
 
     function stageForc(){
-        switch (val){
+        switch (value){
             case(0):
                 return forca0
             case(1):
@@ -42,8 +41,8 @@ export default function Game(props){
         <header>
             <ForcView stage={stageForc()}/>
             <div>   
-                <GameInit/>
-                <WordChosen/>
+                <GameInit startGameClick={startGameClick}/>
+                <WordChosen word={word} letter={letter}/>
             </div>
         </header>
     )
