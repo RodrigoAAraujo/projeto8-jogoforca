@@ -38,6 +38,16 @@ header button{
     font-weight: 500;
 }
 
+header .word-chosen{
+    display: flex;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+header .word-chosen h1{
+    margin: 0px 3px;
+    font-size: 40px;
+    font-weight: 700;
+}
 
 
 .letters-guess{

@@ -42,7 +42,7 @@ export default function Game(props){
             <ForcView stage={stageForc()}/>
             <div>   
                 <GameInit startGameClick={startGameClick}/>
-                <WordChosen word={word} letter={letter}/>
+                <WordChosen word={word}/>
             </div>
         </header>
     )

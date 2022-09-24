@@ -28,18 +28,12 @@ function Letter(props){
     const {value ,checkLetter, putOn} = props
     const [putOnCheck, setCheck] = useState(true)
 
-    console.log(checkLetter)
-
-
     function checkButton(value){
         if(putOn && putOnCheck){
             checkLetter(value)
             setCheck(false)
         }
     }
-
-
-
 
     return(
         <div className={(putOn && putOnCheck)? "letter active" : "letter deactive"} 

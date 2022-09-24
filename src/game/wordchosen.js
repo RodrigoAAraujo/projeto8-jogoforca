@@ -1,14 +1,27 @@
 
 export default function WordChosen(props){
-    const {word} = props    
-    if(word != null){
-        console.log(word.split(""))
+
+    function testExistence(l){
+        if(l === ""){
+            return(<h1>_</h1>)
+        }else{
+            return(<h1>{l}</h1>)
+        }
     }
-    return(
-        <div className="word-chosen">
-            <h1 data-identifier="word">
-                {word}
-            </h1>
-        </div>
-    )
+
+    if(Array.isArray(props.word)){
+        return(
+            <div className="word-chosen" data-identifier="word">
+                {props.word.map((l) => testExistence(l))}
+            </div>
+        )
+    }else if(typeof props.word === "string" ){
+        return(
+            <div className="word-chosen finished" data-identifier="word">
+                <h1>{props.word}</h1>
+            </div>
+        )
+    }else{
+        return null
+    }
 }
