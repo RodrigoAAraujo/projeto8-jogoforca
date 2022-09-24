@@ -1,8 +1,7 @@
-import { useState } from "react"
-import App from "./app"
+import styled from "styled-components"
 
 export default function Letters(props){
-    const {checkLetter, putOn} = props
+    const {checkLetter, putOn, letterOn} = props
 
     const alphabet = [
         "a", "b", "c", "d", "e", 
@@ -13,32 +12,63 @@ export default function Letters(props){
     ]
     
     return(
-        <div className="letters-guess">
+        <LetterBox>
             {alphabet.map((l) => 
             <Letter 
                 value={l} 
                 checkLetter ={checkLetter}
                 putOn={putOn}
+                letterOn ={letterOn}
             />)}
-        </div>
+        </LetterBox>
     )   
 }
 
 function Letter(props){
-    const {value ,checkLetter, putOn} = props
-    const [putOnCheck, setCheck] = useState(true)
-
-    function checkButton(value){
-        if(putOn && putOnCheck){
-            checkLetter(value)
-            setCheck(false)
-        }
-    }
-
+    const {value ,checkLetter, putOn,letterOn} = props
+    
     return(
-        <div className={(putOn && putOnCheck)? "letter active" : "letter deactive"} 
-        onClick={() => checkButton(value)}>
+        <button className={(!letterOn.includes(value) && putOn)? "letter active" : "letter deactive"} 
+            data-identifier="letter"
+            onClick={() => checkLetter(value)}>
             <h1>{value}</h1>
-        </div>
+        </button>
     )
 }
+
+const LetterBox = styled.div`
+
+    width: 95%;
+    max-width: 800px;
+    margin: 0px auto;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(13,max-content);
+    align-items: center;
+    justify-content: center;
+    
+    .letter{
+        margin: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 23px;
+        font-weight: 900;
+    }
+    .active, .word-guess .active{
+        background-color: #ade0f5;
+        color: #309ac4;
+    }
+    .deactive, .word-guess .deactive{
+        background-color: #b3b3b3;
+        color:#6d6d6d;
+    }
+    @media (max-width:700px){
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+`

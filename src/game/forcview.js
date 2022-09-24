@@ -9,7 +9,7 @@ import forca5 from "../assets/forca5.png"
 import forca6 from "../assets/forca6.png"
 
 export default function ForcView(props){
-    let stage = props.stage
+    const{stage} = props
     return(
         <div className="forc-image">
             <img data-identifier="game-image" src={stage}/>
