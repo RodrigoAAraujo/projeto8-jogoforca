@@ -49,7 +49,7 @@ export default function App() {
     }
 
     function determineValue(letter) {
-        if(!lettersGuessed.includes(letter)){
+        if(!letterGuessed.includes(letter)){
             const wordFormatted = word.replace(/[\W\[\] ]/g, function (a) { return map[a] || a })
             let letterBox
             let letterGuessedNow
