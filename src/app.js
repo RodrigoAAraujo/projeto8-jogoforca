@@ -49,54 +49,56 @@ export default function App() {
     }
 
     function determineValue(letter) {
-        const wordFormatted = word.replace(/[\W\[\] ]/g, function (a) { return map[a] || a })
-        let letterBox
-        let letterGuessedNow
-        let passed = 0
+        if(!lettersGuessed.includes(letter)){
+            const wordFormatted = word.replace(/[\W\[\] ]/g, function (a) { return map[a] || a })
+            let letterBox
+            let letterGuessedNow
+            let passed = 0
 
-        switch (letter) {
-            case "c":
-                letterBox = ["c", "ç"]
-                letterGuessedNow = letterGuessed.concat(letterBox)
-                break
-            case "a":
-                letterBox = ["a", "à", "á", "â", "ã"]
-                letterGuessedNow = letterGuessed.concat(letterBox)
-                break
-            case "a":
-                letterBox = ["e", "é", "ê"]
-                letterGuessedNow = letterGuessed.concat(letterBox)
-                break
-            case "i":
-                letterBox = ["i", "í", "î"]
-                letterGuessedNow = letterGuessed.concat(letterBox)
-                break
-            case "o":
-                letterBox = ["o", "ó", "ố", "õ"]
-                letterGuessedNow = letterGuessed.concat(letterBox)
-                break
-            case "u":
-                letterBox = ["u", "ú", "û"]
-                letterGuessedNow = letterGuessed.concat(letterBox)
-                break
-            default:
-                letterGuessedNow = [...letterGuessed, letter]
-                passed = 1
-        }
+            switch (letter) {
+                case "c":
+                    letterBox = ["c", "ç"]
+                    letterGuessedNow = letterGuessed.concat(letterBox)
+                    break
+                case "a":
+                    letterBox = ["a", "à", "á", "â", "ã"]
+                    letterGuessedNow = letterGuessed.concat(letterBox)
+                    break
+                case "a":
+                    letterBox = ["e", "é", "ê"]
+                    letterGuessedNow = letterGuessed.concat(letterBox)
+                    break
+                case "i":
+                    letterBox = ["i", "í", "î"]
+                    letterGuessedNow = letterGuessed.concat(letterBox)
+                    break
+                case "o":
+                    letterBox = ["o", "ó", "ố", "õ"]
+                    letterGuessedNow = letterGuessed.concat(letterBox)
+                    break
+                case "u":
+                    letterBox = ["u", "ú", "û"]
+                    letterGuessedNow = letterGuessed.concat(letterBox)
+                    break
+                default:
+                    letterGuessedNow = [...letterGuessed, letter]
+                    passed = 1
+            }
 
-        setLettersGuessed(letterGuessedNow)
+            setLettersGuessed(letterGuessedNow)
 
-        if (init) {
-            if (wordFormatted.includes(letter)) {
-                const newValue = word.split("").map((l) => letterGuessedNow.includes(l) ? l : "")
-                setWordDiscovery(newValue)
-                if (compareArrays(newValue, word.split(""))) {
-                    winGame()
-                }
-            } else {
-                setValue(value + 1)
-                if (value === 5) {
-                    loseGame()
+            if (init) {
+                if (wordFormatted.includes(letter)) {
+                    const newValue = word.split("").map((l) => letterGuessedNow.includes(l) ? l : "")
+                    setWordDiscovery(newValue)
+                    if (compareArrays(newValue, word.split(""))) {
+                        winGame()
+                    }
+                } else {
+                    setValue(value + 1)
+                    if (value === 5) {
+                        loseGame()
+                    }
                 }
             }
         }
