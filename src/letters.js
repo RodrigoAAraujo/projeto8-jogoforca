@@ -30,7 +30,7 @@ function Letter(props){
     return(
         <button className={(!letterOn.includes(value) && putOn)? "letter active" : "letter deactive"} 
             data-identifier="letter"
-            onClick={() => checkLetter(value)}>
+            onClick={(!letterOn.includes(value) && putOn) ? checkLetter(value) : null}>
             <h1>{value}</h1>
         </button>
     )
